@@ -1,57 +1,61 @@
 (function () {
-  if (typeof Motion === 'undefined') return;
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  try {
+    if (typeof Motion === 'undefined') return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-  const { animate, inView, stagger, spring } = Motion;
+    const { animate, inView, stagger, spring } = Motion;
 
-  const spr = spring({ stiffness: 180, damping: 22 });
-  const sprSnap = spring({ stiffness: 260, damping: 28 });
+    const spr = spring({ stiffness: 180, damping: 22 });
+    const sprSnap = spring({ stiffness: 260, damping: 28 });
 
-  animate('.profile-card', { opacity: [0, 1], x: [-20, 0] }, { easing: spr });
+    animate('.profile-card', { opacity: [0, 1], x: [-20, 0] }, { easing: spr });
 
-  const pinCards = [...document.querySelectorAll('.pin-card')];
-  if (pinCards.length) {
-    animate(pinCards, { opacity: [0, 1], y: [24, 0] }, {
-      delay: stagger(0.09),
-      easing: spr
-    });
-  }
-
-  const scrollEls = '.repo-item, .timeline-item, .skills-grid, .readme-block';
-  document.querySelectorAll(scrollEls).forEach(el => {
-    inView(el, () => {
-      animate(el, { opacity: [0, 1], y: [20, 0] }, { easing: spr });
-    }, { amount: 0.12 });
-  });
-
-  document.querySelectorAll('.star-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      animate(btn, { scale: [1, 1.3, 1] }, { duration: 0.35, easing: sprSnap });
-    });
-  });
-
-  function animatePanel(panel) {
-    animate(panel, { opacity: [0, 1], y: [10, 0] }, { duration: 0.28, easing: [0.22, 1, 0.36, 1] });
-
-    const cards = [...panel.querySelectorAll('.pin-card, .award-card')];
-    if (cards.length) {
-      animate(cards, { opacity: [0, 1], y: [18, 0] }, {
-        delay: stagger(0.07, { start: 0.06 }),
+    const pinCards = [...document.querySelectorAll('.pin-card')];
+    if (pinCards.length) {
+      animate(pinCards, { opacity: [0, 1], y: [24, 0] }, {
+        delay: stagger(0.09),
         easing: spr
       });
     }
 
-    panel.querySelectorAll(scrollEls).forEach(el => {
+    const scrollEls = '.repo-item, .timeline-item, .skills-grid, .readme-block';
+    document.querySelectorAll(scrollEls).forEach(el => {
       inView(el, () => {
         animate(el, { opacity: [0, 1], y: [20, 0] }, { easing: spr });
       }, { amount: 0.12 });
     });
-  }
 
-  document.addEventListener('tabswitch', () => {
-    const active = document.querySelector('.tab-panel.active');
-    if (active) animatePanel(active);
-  });
+    document.querySelectorAll('.star-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        animate(btn, { scale: [1, 1.3, 1] }, { duration: 0.35, easing: sprSnap });
+      });
+    });
+
+    function animatePanel(panel) {
+      animate(panel, { opacity: [0, 1], y: [10, 0] }, { duration: 0.28, easing: [0.22, 1, 0.36, 1] });
+
+      const cards = [...panel.querySelectorAll('.pin-card, .award-card')];
+      if (cards.length) {
+        animate(cards, { opacity: [0, 1], y: [18, 0] }, {
+          delay: stagger(0.07, { start: 0.06 }),
+          easing: spr
+        });
+      }
+
+      panel.querySelectorAll(scrollEls).forEach(el => {
+        inView(el, () => {
+          animate(el, { opacity: [0, 1], y: [20, 0] }, { easing: spr });
+        }, { amount: 0.12 });
+      });
+    }
+
+    document.addEventListener('tabswitch', () => {
+      const active = document.querySelector('.tab-panel.active');
+      if (active) animatePanel(active);
+    });
+  } catch (e) {
+    console.warn('Motion animation failed:', e);
+  }
 })();
 
 (function () {
@@ -150,5 +154,22 @@
   const btn = document.getElementById('downloadBtn');
   if (!btn) return;
   btn.addEventListener('click', () => window.print());
+})();
+
+(function () {
+  fetch('https://api.github.com/users/thanerenevv')
+    .then(r => r.json())
+    .then(data => {
+      const q = s => document.querySelector(s);
+      const id = s => document.getElementById(s);
+
+      if (data.name)       q('.name').textContent        = data.name;
+      if (data.login)      q('.username').textContent    = '@' + data.login;
+      if (data.bio != null) q('.bio').textContent        = data.bio;
+      if (data.avatar_url) q('.avatar img').src          = data.avatar_url;
+      if (id('followersCount')) id('followersCount').textContent = data.followers ?? 0;
+      if (id('followingCount')) id('followingCount').textContent = data.following ?? 0;
+    })
+    .catch(() => {});
 })();
 
