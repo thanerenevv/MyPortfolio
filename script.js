@@ -1,33 +1,56 @@
 (function () {
+  if (typeof Motion === 'undefined') return;
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-  const selector = '.repo-item, .timeline-item, .skills-grid, .profile-card, .readme-block';
+  const { animate, inView, stagger, spring } = Motion;
 
-  const observe = (root) => {
-    root.querySelectorAll(selector).forEach((el, i) => {
-      if (el.classList.contains('animate-on-scroll')) return;
-      el.classList.add('animate-on-scroll');
-      const siblings = Array.from(el.parentElement?.children || [el]);
-      const idx = siblings.indexOf(el);
-      el.style.setProperty('--anim-delay', `${Math.min(idx * 0.07, 0.42)}s`);
-      io.observe(el);
+  const spr = spring({ stiffness: 180, damping: 22 });
+  const sprSnap = spring({ stiffness: 260, damping: 28 });
+
+  animate('.profile-card', { opacity: [0, 1], x: [-20, 0] }, { easing: spr });
+
+  const pinCards = [...document.querySelectorAll('.pin-card')];
+  if (pinCards.length) {
+    animate(pinCards, { opacity: [0, 1], y: [24, 0] }, {
+      delay: stagger(0.09),
+      easing: spr
     });
-  };
+  }
 
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('in-view');
-        io.unobserve(entry.target);
-      }
+  const scrollEls = '.repo-item, .timeline-item, .skills-grid, .readme-block';
+  document.querySelectorAll(scrollEls).forEach(el => {
+    inView(el, () => {
+      animate(el, { opacity: [0, 1], y: [20, 0] }, { easing: spr });
+    }, { amount: 0.12 });
+  });
+
+  document.querySelectorAll('.star-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      animate(btn, { scale: [1, 1.3, 1] }, { duration: 0.35, easing: sprSnap });
     });
-  }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+  });
 
-  observe(document);
+  function animatePanel(panel) {
+    animate(panel, { opacity: [0, 1], y: [10, 0] }, { duration: 0.28, easing: [0.22, 1, 0.36, 1] });
+
+    const cards = [...panel.querySelectorAll('.pin-card, .award-card')];
+    if (cards.length) {
+      animate(cards, { opacity: [0, 1], y: [18, 0] }, {
+        delay: stagger(0.07, { start: 0.06 }),
+        easing: spr
+      });
+    }
+
+    panel.querySelectorAll(scrollEls).forEach(el => {
+      inView(el, () => {
+        animate(el, { opacity: [0, 1], y: [20, 0] }, { easing: spr });
+      }, { amount: 0.12 });
+    });
+  }
 
   document.addEventListener('tabswitch', () => {
     const active = document.querySelector('.tab-panel.active');
-    if (active) observe(active);
+    if (active) animatePanel(active);
   });
 })();
 

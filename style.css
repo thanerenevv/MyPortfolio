@@ -38,25 +38,8 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
 }
 
-@keyframes panelIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-.animate-on-scroll {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.5s ease var(--anim-delay, 0s),
-              transform 0.5s ease var(--anim-delay, 0s);
-}
-.animate-on-scroll.in-view {
-  opacity: 1;
-  transform: translateY(0);
-}
-
 @media (prefers-reduced-motion: reduce) {
-  .animate-on-scroll { opacity: 1 !important; transform: none !important; transition: none !important; }
-  .tab-panel.active  { animation: none !important; }
+  .tab-panel.active { animation: none !important; }
 }
 
 a {
@@ -78,21 +61,16 @@ button { font-family: inherit; }
   0%, 100% { transform: translateY(0px); }
   50%       { transform: translateY(-7px); }
 }
-@keyframes cardEntrance {
-  from { opacity: 0; transform: translateY(22px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-.pin-card:nth-child(1) { animation: cardEntrance .5s ease .05s both, float 5s ease-in-out  .6s infinite; }
-.pin-card:nth-child(2) { animation: cardEntrance .5s ease .15s both, float 5s ease-in-out 1.85s infinite; }
-.pin-card:nth-child(3) { animation: cardEntrance .5s ease .25s both, float 5s ease-in-out 3.1s infinite; }
-.pin-card:nth-child(4) { animation: cardEntrance .5s ease .35s both, float 5s ease-in-out 4.35s infinite; }
+.pin-card:nth-child(1) { animation: float 5s   ease-in-out  .6s infinite; }
+.pin-card:nth-child(2) { animation: float 5s   ease-in-out 1.85s infinite; }
+.pin-card:nth-child(3) { animation: float 5s   ease-in-out 3.1s  infinite; }
+.pin-card:nth-child(4) { animation: float 5s   ease-in-out 4.35s infinite; }
 .pin-card:hover { animation-play-state: paused; }
 
-.award-card:nth-child(1) { animation: cardEntrance .5s ease .05s both, float 5.5s ease-in-out  .6s infinite; }
-.award-card:nth-child(2) { animation: cardEntrance .5s ease .15s both, float 5.5s ease-in-out 2.05s infinite; }
-.award-card:nth-child(3) { animation: cardEntrance .5s ease .25s both, float 5.5s ease-in-out 3.5s infinite; }
-.award-card:nth-child(4) { animation: cardEntrance .5s ease .35s both, float 5.5s ease-in-out 4.95s infinite; }
+.award-card:nth-child(1) { animation: float 5.5s ease-in-out  .6s  infinite; }
+.award-card:nth-child(2) { animation: float 5.5s ease-in-out 2.05s infinite; }
+.award-card:nth-child(3) { animation: float 5.5s ease-in-out 3.5s  infinite; }
+.award-card:nth-child(4) { animation: float 5.5s ease-in-out 4.95s infinite; }
 .award-card:hover { animation-play-state: paused; }
 
 
@@ -304,7 +282,6 @@ button { font-family: inherit; }
 }
 .tab-panel.active {
   display: flex;
-  animation: panelIn 0.3s ease both;
 }
 
 .readme-header {
