@@ -38,7 +38,6 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
 }
 
-/* ===== Scroll entrance animations ===== */
 @keyframes panelIn {
   from { opacity: 0; transform: translateY(10px); }
   to   { opacity: 1; transform: translateY(0); }
@@ -75,7 +74,6 @@ button { font-family: inherit; }
   border-radius: 4px;
 }
 
-/* ===== Float animations ===== */
 @keyframes float {
   0%, 100% { transform: translateY(0px); }
   50%       { transform: translateY(-7px); }
@@ -85,90 +83,28 @@ button { font-family: inherit; }
   to   { opacity: 1; transform: translateY(0); }
 }
 
-/* Pin cards — entrance then float */
 .pin-card:nth-child(1) { animation: cardEntrance .5s ease .05s both, float 5s ease-in-out  .6s infinite; }
 .pin-card:nth-child(2) { animation: cardEntrance .5s ease .15s both, float 5s ease-in-out 1.85s infinite; }
 .pin-card:nth-child(3) { animation: cardEntrance .5s ease .25s both, float 5s ease-in-out 3.1s infinite; }
 .pin-card:nth-child(4) { animation: cardEntrance .5s ease .35s both, float 5s ease-in-out 4.35s infinite; }
 .pin-card:hover { animation-play-state: paused; }
 
-/* Award cards — staggered float */
 .award-card:nth-child(1) { animation: cardEntrance .5s ease .05s both, float 5.5s ease-in-out  .6s infinite; }
 .award-card:nth-child(2) { animation: cardEntrance .5s ease .15s both, float 5.5s ease-in-out 2.05s infinite; }
 .award-card:nth-child(3) { animation: cardEntrance .5s ease .25s both, float 5.5s ease-in-out 3.5s infinite; }
 .award-card:nth-child(4) { animation: cardEntrance .5s ease .35s both, float 5.5s ease-in-out 4.95s infinite; }
 .award-card:hover { animation-play-state: paused; }
 
-/* Avatar — no float */
 
 @media (prefers-reduced-motion: reduce) {
   .pin-card, .award-card, .avatar { animation: none !important; }
 }
 
-/* ===== Top bar ===== */
-.topbar {
-  background: var(--bg);
-  border-bottom: 1px solid var(--border);
-  position: sticky;
-  top: 0;
-  z-index: 50;
-}
-.topbar-inner {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 10px 24px;
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-
-.topbar-nav { display: flex; gap: 2px; }
-.topbar-nav a {
-  font-family: var(--font-heading);
-  color: var(--text);
-  font-size: 14px;
-  font-weight: 500;
-  padding: 6px 12px;
-  border-radius: var(--radius);
-  transition: background .2s, color .2s;
-  cursor: pointer;
-}
-.topbar-nav a:hover { background: var(--yellow-tint); }
-.topbar-nav a.active { background: var(--yellow-tint); color: var(--yellow-dark); font-weight: 600; }
-
-.topbar-search {
-  margin-left: auto;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  background: var(--bg-subtle);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 6px 10px;
-  color: var(--text-tert);
-  width: 280px;
-  transition: border-color .15s, box-shadow .15s;
-}
-.topbar-search:focus-within {
-  border-color: var(--yellow);
-  box-shadow: 0 0 0 3px rgba(245,197,24,.15);
-}
-.topbar-search input {
-  background: transparent;
-  border: none;
-  outline: none;
-  flex: 1;
-  font-size: 14px;
-  color: var(--text);
-  font-family: inherit;
-}
-
-/* ===== Sub navigation ===== */
 .subnav {
   background: var(--bg);
   border-bottom: 1px solid var(--border);
   position: sticky;
-  top: 57px;
+  top: 0;
   z-index: 40;
 }
 .subnav-inner {
@@ -203,7 +139,6 @@ button { font-family: inherit; }
 }
 .subnav-item.active svg { color: var(--yellow-dark); }
 
-/* ===== Layout ===== */
 .layout {
   max-width: 1280px;
   margin: 0 auto;
@@ -213,10 +148,9 @@ button { font-family: inherit; }
   gap: 24px;
 }
 
-/* ===== Profile sidebar ===== */
 .profile-card {
   position: sticky;
-  top: 130px;
+  top: 72px;
   align-self: start;
 }
 .avatar {
@@ -264,7 +198,6 @@ button { font-family: inherit; }
   color: var(--text);
 }
 
-/* ===== Follow button ===== */
 .follow-btn {
   margin-top: 16px;
   width: 100%;
@@ -360,7 +293,6 @@ button { font-family: inherit; }
 .achievements:empty,
 .orgs:empty { display: none; }
 
-/* ===== Content area & tab panels ===== */
 .content {
   min-width: 0;
 }
@@ -374,6 +306,55 @@ button { font-family: inherit; }
   display: flex;
   animation: panelIn 0.3s ease both;
 }
+
+.readme-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--text-sec);
+  margin-bottom: 20px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--border);
+}
+.readme-header strong { color: var(--text); }
+.readme-body h2 {
+  font-family: var(--font-heading);
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+  margin: 0 0 12px;
+  color: var(--text);
+}
+.readme-body h3 {
+  font-family: var(--font-heading);
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: var(--text-sec);
+  margin: 20px 0 8px;
+}
+.readme-body p {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--text);
+  margin: 0 0 4px;
+}
+.readme-body ul {
+  margin: 0;
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.readme-body li {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text);
+}
+.readme-body a { color: var(--yellow-deep); }
+.readme-body a:hover { text-decoration: underline; }
 
 .block-title {
   font-family: var(--font-heading);
@@ -396,7 +377,6 @@ button { font-family: inherit; }
 }
 .link-subtle:hover { color: var(--yellow-deep); }
 
-/* ===== Pinned grid ===== */
 .pinned-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -476,7 +456,6 @@ button { font-family: inherit; }
 .pin-foot .stars svg,
 .pin-foot .forks svg { color: var(--text-tert); }
 
-/* ===== Activity / contribution ===== */
 .contribution-summary {
   font-size: 13px;
   color: var(--text-sec);
@@ -554,7 +533,6 @@ button { font-family: inherit; }
 .legend .lvl-3 { background: #ffd54f; }
 .legend .lvl-4 { background: #f5c518; }
 
-/* ===== Repos filter bar ===== */
 .repos-filter-bar {
   display: flex;
   gap: 12px;
@@ -596,7 +574,6 @@ button { font-family: inherit; }
 }
 .filter-select:focus { border-color: var(--yellow); }
 
-/* ===== Repo list item ===== */
 .repos-list { border-top: 1px solid var(--border); }
 
 .repo-item {
@@ -672,7 +649,6 @@ button { font-family: inherit; }
   border-bottom: 1px solid var(--border);
 }
 
-/* ===== Awards ===== */
 .awards-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -698,7 +674,6 @@ button { font-family: inherit; }
 .award-desc { font-size: 13px; color: var(--text-sec); line-height: 1.5; }
 .award-date { font-size: 12px; color: var(--text-tert); margin-top: 6px; }
 
-/* ===== Resume ===== */
 .resume-header {
   display: flex;
   align-items: center;
@@ -760,7 +735,6 @@ button { font-family: inherit; }
 }
 .skill-tag:hover { background: var(--yellow-soft); border-color: var(--yellow); }
 
-/* ===== Contact form ===== */
 .contact-intro { font-size: 14px; color: var(--text-sec); margin-bottom: 24px; line-height: 1.6; }
 .contact-form { display: flex; flex-direction: column; gap: 16px; max-width: 560px; }
 .form-group { display: flex; flex-direction: column; gap: 6px; }
@@ -821,7 +795,6 @@ button { font-family: inherit; }
 }
 .contact-success svg { flex-shrink: 0; }
 
-/* ===== Responsive ===== */
 @media (max-width: 1024px) {
   .layout {
     grid-template-columns: 1fr;
@@ -860,7 +833,6 @@ button { font-family: inherit; }
   .awards-grid { grid-template-columns: 1fr; }
 }
 
-/* ===== Print ===== */
 @media print {
   .topbar, .subnav { display: none; }
   .layout { grid-template-columns: 1fr; padding: 0; }
@@ -869,7 +841,6 @@ button { font-family: inherit; }
   .tab-panel.active { display: flex !important; }
 }
 
-/* ===== Motion preferences ===== */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: .01ms !important;

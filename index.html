@@ -11,28 +11,7 @@
 </head>
 <body>
 
-  <!-- ===== Top bar ===== -->
-  <header class="topbar">
-    <div class="topbar-inner">
-      <nav class="topbar-nav" aria-label="Primary">
-        <a href="#" data-tab="overview">Overview</a>
-        <a href="#" data-tab="projects">Projects</a>
-        <a href="#" data-tab="awards">Awards</a>
-        <a href="#" data-tab="resume">Resume</a>
-        <a href="#" data-tab="contact">Contact</a>
-      </nav>
-
-      <div class="topbar-search">
-        <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor" aria-hidden="true">
-          <path d="M11.5 7a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0Zm-.82 4.74a6 6 0 1 1 1.06-1.06l3.04 3.04a.75.75 0 1 1-1.06 1.06l-3.04-3.04Z"/>
-        </svg>
-        <input type="search" placeholder="Search" aria-label="Search" id="topbarSearch" />
-      </div>
-    </div>
-  </header>
-
-  <!-- ===== Sub navigation ===== -->
-  <div class="subnav">
+    <div class="subnav">
     <div class="subnav-inner">
       <a href="#" class="subnav-item active" data-tab="overview">
         <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0ZM1.5 8a6.5 6.5 0 1 1 13 0 6.5 6.5 0 0 1-13 0Zm4.879-2.773 4.264 2.559a.25.25 0 0 1 0 .428l-4.264 2.559A.25.25 0 0 1 6 10.559V5.442a.25.25 0 0 1 .379-.215Z"/></svg>
@@ -50,18 +29,12 @@
         <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M0 1.75A.75.75 0 0 1 .75 1h4.253c1.227 0 2.317.59 3 1.501A3.743 3.743 0 0 1 11.006 1h4.245a.75.75 0 0 1 .75.75v10.5a.75.75 0 0 1-.75.75h-4.507a2.25 2.25 0 0 0-1.591.659l-.622.621a.75.75 0 0 1-1.06 0l-.622-.621A2.25 2.25 0 0 0 5.258 13H.75a.75.75 0 0 1-.75-.75Zm7.251 10.324.004-5.073-.002-2.253A2.25 2.25 0 0 0 5.003 2.5H1.5v9h3.757a3.75 3.75 0 0 1 1.994.574ZM8.755 4.75l-.004 7.322a3.752 3.752 0 0 1 1.992-.572H14.5v-9h-3.495a2.25 2.25 0 0 0-2.25 2.25Z"/></svg>
         Resume
       </a>
-      <a href="#" class="subnav-item" data-tab="contact">
-        <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M1.75 2h12.5c.966 0 1.75.784 1.75 1.75v8.5A1.75 1.75 0 0 1 14.25 14H1.75A1.75 1.75 0 0 1 0 12.25v-8.5C0 2.784.784 2 1.75 2ZM1.5 12.251c0 .138.112.25.25.25h12.5a.25.25 0 0 0 .25-.25V5.809L8.38 9.397a.75.75 0 0 1-.76 0L1.5 5.809v6.442Zm13-8.181v-.32a.25.25 0 0 0-.25-.25H1.75a.25.25 0 0 0-.25.25v.32L8 7.88Z"/></svg>
-        Contact
-      </a>
     </div>
   </div>
 
-  <!-- ===== Main layout ===== -->
-  <main class="layout">
+    <main class="layout">
 
-    <!-- ===== Profile sidebar ===== -->
-    <aside class="profile-card">
+        <aside class="profile-card">
       <div class="avatar">
         <img src="https://avatars.githubusercontent.com/u/263024195?v=4" alt="Than" />
       </div>
@@ -69,9 +42,6 @@
       <h1 class="name">Than</h1>
       <p class="username">@thanerenevv</p>
       <p class="bio">hihi chat</p>
-
-      <button class="follow-btn" id="followBtn" type="button">Follow</button>
-      <button class="edit-btn" id="editBtn" type="button">Edit profile</button>
 
       <div class="follow-row">
         <a href="https://github.com/thanerenevv?tab=followers" class="follow-link" target="_blank"><strong id="followersCount">0</strong> <span>followers</span></a>
@@ -98,11 +68,9 @@
       <div class="orgs"></div>
     </aside>
 
-    <!-- ===== Tab panels ===== -->
-    <section class="content">
+        <section class="content">
 
-      <!-- Overview -->
-      <div class="tab-panel active" id="panel-overview">
+            <div class="tab-panel active" id="panel-overview">
         <div class="block">
           <h2 class="block-title">Pinned Projects</h2>
           <div class="pinned-grid">
@@ -166,34 +134,39 @@
           </div>
         </div>
 
-        <div class="block">
-          <div class="block-header">
-            <h2 class="block-title">Activity</h2>
-            <a href="https://github.com/thanerenevv" class="link-subtle" target="_blank">View on GitHub</a>
+        <div class="block readme-block">
+          <div class="readme-header">
+            <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M0 1.75C0 .784.784 0 1.75 0h12.5C15.216 0 16 .784 16 1.75v9.5A1.75 1.75 0 0 1 14.25 13H8.06l-2.573 2.573A1.458 1.458 0 0 1 3 14.543V13H1.75A1.75 1.75 0 0 1 0 11.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.5c0 .138.112.25.25.25h2a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h6.5a.25.25 0 0 0 .25-.25v-9.5a.25.25 0 0 0-.25-.25Z"/></svg>
+            <span>thanerenevv / <strong>thanerenevv</strong></span>
           </div>
-          <p class="contribution-summary">
-            <strong id="contribCount">0</strong> contributions in the last year
-          </p>
-          <div class="graph-wrap">
-            <div class="graph-scroll">
-              <div class="months" id="months"></div>
-              <div class="graph" id="graph" role="img" aria-label="Activity in the past year"></div>
-            </div>
-            <div class="legend">
-              <span>Less</span>
-              <span class="lvl lvl-0"></span>
-              <span class="lvl lvl-1"></span>
-              <span class="lvl lvl-2"></span>
-              <span class="lvl lvl-3"></span>
-              <span class="lvl lvl-4"></span>
-              <span>More</span>
-            </div>
+          <div class="readme-body">
+            <h2>Hi there! I'm Than.</h2>
+            <p>I'm a junior embedded engineer with knowledge in microcontrollers, IoT development, and design. I enjoy doing projects that include both hardware and software into one single idea as my hobby to solve real world problems. I have experience with platforms such as ESP32, STM32, and Raspberry Pi, and I am comfortable working with communication protocols, peripherals, and real world hardware limits. I focus on creating efficient, reliable systems that people would use.</p>
+            <h3>What do I do?</h3>
+            <p>I have knowledge on embedded system design with microcontrollers and IoT projects, for example:</p>
+            <ul>
+              <li>ESP32, Raspberry Pi (MCU and SBC), STM32</li>
+              <li>Schematic Design, PCB Design/Routing</li>
+              <li>3D Modeling / CAD</li>
+              <li>C++, Python</li>
+            </ul>
+            <h3>My interests include</h3>
+            <ul>
+              <li>IoT systems and smart devices</li>
+              <li>Low-level hardware programming</li>
+              <li>Designing complete end-to-end projects (hardware + software)</li>
+            </ul>
+            <h3>Contact</h3>
+            <ul>
+              <li>Instagram: <a href="https://instagram.com/thanprobably" target="_blank">thanprobably</a></li>
+              <li>Discord: @thanerenevv</li>
+              <li>Email: thantheonlyone@gmail.com</li>
+            </ul>
           </div>
         </div>
       </div>
 
-      <!-- Projects -->
-      <div class="tab-panel" id="panel-projects">
+            <div class="tab-panel" id="panel-projects">
         <div class="block">
           <div class="repos-filter-bar">
             <input type="search" class="repos-search" id="reposSearch" placeholder="Find a repository…" />
@@ -435,8 +408,7 @@
         </div>
       </div>
 
-      <!-- Awards -->
-      <div class="tab-panel" id="panel-awards">
+            <div class="tab-panel" id="panel-awards">
         <div class="block">
           <h2 class="block-title">Achievements &amp; Awards</h2>
           <div class="empty-state">
@@ -446,8 +418,7 @@
         </div>
       </div>
 
-      <!-- Resume -->
-      <div class="tab-panel" id="panel-resume">
+            <div class="tab-panel" id="panel-resume">
         <div class="block">
           <div class="resume-header">
             <h2 class="block-title" style="margin-bottom:0">Resume</h2>
@@ -484,33 +455,6 @@
               <span class="skill-tag">ESP32</span>
               <span class="skill-tag">Git</span>
             </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Contact -->
-      <div class="tab-panel" id="panel-contact">
-        <div class="block">
-          <h2 class="block-title">Get in Touch</h2>
-          <p class="contact-intro">Have a project in mind or just want to say hello? Send me a message and I'll get back to you soon.</p>
-          <form class="contact-form" id="contactForm" novalidate>
-            <div class="form-group">
-              <label for="contactName">Name</label>
-              <input type="text" id="contactName" placeholder="Your name" autocomplete="name" />
-            </div>
-            <div class="form-group">
-              <label for="contactEmail">Email</label>
-              <input type="email" id="contactEmail" placeholder="your@email.com" autocomplete="email" />
-            </div>
-            <div class="form-group">
-              <label for="contactMsg">Message</label>
-              <textarea id="contactMsg" rows="5" placeholder="What's on your mind?"></textarea>
-            </div>
-            <button type="submit" class="send-btn">Send Message</button>
-          </form>
-          <div class="contact-success" id="contactSuccess" hidden>
-            <svg viewBox="0 0 16 16" width="20" height="20" fill="currentColor"><path d="M8 16A8 8 0 1 1 8 0a8 8 0 0 1 0 16Zm3.78-9.72a.751.751 0 0 0-.018-1.042.751.751 0 0 0-1.042-.018L6.75 9.19 5.28 7.72a.751.751 0 0 0-1.042.018.751.751 0 0 0-.018 1.042l2 2a.75.75 0 0 0 1.06 0Z"/></svg>
-            Message sent! I'll get back to you soon.
           </div>
         </div>
       </div>
