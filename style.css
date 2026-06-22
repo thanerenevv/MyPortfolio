@@ -99,8 +99,7 @@ button { font-family: inherit; }
 .award-card:nth-child(4) { animation: cardEntrance .5s ease .35s both, float 5.5s ease-in-out 4.95s infinite; }
 .award-card:hover { animation-play-state: paused; }
 
-/* Avatar float */
-.avatar { animation: float 6s ease-in-out .3s infinite; }
+/* Avatar — no float */
 
 @media (prefers-reduced-motion: reduce) {
   .pin-card, .award-card, .avatar { animation: none !important; }
@@ -231,7 +230,6 @@ button { font-family: inherit; }
   margin-bottom: 16px;
   overflow: hidden;
   box-shadow: 0 4px 16px rgba(9,9,11,.06);
-  /* animation set in float section above */
 }
 .avatar span {
   font-size: 64px;
