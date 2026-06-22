@@ -39,7 +39,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .tab-panel.active { animation: none !important; }
+  .tab-panel.active { animation: none !important; transition: none !important; }
 }
 
 a {
@@ -282,6 +282,12 @@ button { font-family: inherit; }
 }
 .tab-panel.active {
   display: flex;
+  animation: panelIn 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes panelIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 .readme-header {

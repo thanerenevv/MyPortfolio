@@ -60,14 +60,36 @@
 
 (function () {
   function switchTab(tabId) {
+    const currentPanel = document.querySelector('.tab-panel.active');
+    const nextPanel = document.getElementById('panel-' + tabId);
+
+    if (!nextPanel || currentPanel === nextPanel) return;
+
     document.querySelectorAll('.subnav-item').forEach(t => {
       t.classList.toggle('active', t.dataset.tab === tabId);
     });
-    document.querySelectorAll('.tab-panel').forEach(p => {
-      p.classList.toggle('active', p.id === 'panel-' + tabId);
-    });
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-    document.dispatchEvent(new Event('tabswitch'));
+
+    function activate() {
+      if (currentPanel) currentPanel.classList.remove('active');
+      nextPanel.classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      document.dispatchEvent(new Event('tabswitch'));
+    }
+
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (currentPanel && !reducedMotion) {
+      currentPanel.style.transition = 'opacity 0.15s ease, transform 0.15s ease';
+      currentPanel.style.opacity = '0';
+      currentPanel.style.transform = 'translateY(-8px)';
+      setTimeout(() => {
+        currentPanel.style.transition = '';
+        currentPanel.style.opacity = '';
+        currentPanel.style.transform = '';
+        activate();
+      }, 150);
+    } else {
+      activate();
+    }
   }
 
   document.querySelectorAll('[data-tab]').forEach(el => {
