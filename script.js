@@ -26,7 +26,7 @@
     });
 
     document.querySelectorAll('.star-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
+btn.addEventListener('click', () => {
         animate(btn, { scale: [1, 1.3, 1] }, { duration: 0.35, easing: sprSnap });
       });
     });
